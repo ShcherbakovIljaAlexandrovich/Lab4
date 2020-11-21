@@ -9,13 +9,16 @@ public class TesterActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(TestBundle.class, req -> {
+                .match(UnitTest.class, req -> {
                     ScriptEngine engine = new
                             ScriptEngineManager().getEngineByName("nashorn");
-                    engine.eval(req.getCode());
+                    engine.eval(req.jsScript);
                     Invocable invocable = (Invocable) engine;
-                    String result = invocable.invokeFunction(req.getFunctionName(), req.getParams()).toString();
-                    sender().tell(new StoreMessage(req.getPackageID(), req.getTestName(), result), self());
+                    String result = invocable.invokeFunction(req.functionName, req.params).toString();
+                    String verdict;
+                    if (result.equals(req.expectedResult)) { verdict = "Pass"; }
+                    else { verdict = "Fail"; }
+                    sender().tell(new StoreMessage(req.packageID, req.testName, verdict), self());
                         }
                 ).build();
     }

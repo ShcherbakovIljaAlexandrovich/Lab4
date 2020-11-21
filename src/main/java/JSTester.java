@@ -34,9 +34,8 @@ public class JSTester {
         ActorRef testAggregatorActor = system.actorOf(new BalancingPool(5).props(
                 Props.create(TesterActor.class)), "testAggregator");
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        MainHttp instance = new MainHttp(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow =
-                instance.createRoute(system).flow(system, materializer);
+                createRoute(system, testAggregatorActor, storeActor).flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost("localhost", 8080),
@@ -61,6 +60,7 @@ public class JSTester {
                             for(UnitTest t: tests) {
                                 testAggregatorActor.tell(t, storeActor);
                             }
+                            return complete("Tests acknowledged.");
                         }
                 ))
         );
