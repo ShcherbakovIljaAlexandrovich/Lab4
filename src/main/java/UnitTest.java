@@ -1,16 +1,12 @@
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UnitTest {
-    @JsonIgnore
     public final String packageID;
-
-    @JsonIgnore
     public final String jsScript;
-
-    @JsonIgnore
     public final String functionName;
 
     @JsonProperty("testName")
