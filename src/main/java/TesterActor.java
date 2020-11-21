@@ -9,7 +9,7 @@ public class TesterActor extends AbstractActor {
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
-                .match(TestMessage.class, req -> {
+                .match(TestBundle.class, req -> {
                     ScriptEngine engine = new
                             ScriptEngineManager().getEngineByName("nashorn");
                     engine.eval(req.getCode());

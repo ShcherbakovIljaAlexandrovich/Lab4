@@ -1,41 +1,28 @@
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TestMessage {
-    private String packageID;
-    private String testName;
-    private String code;
-    private String functionName;
-    private List params;
-    private String expectedResult;
+import java.util.ArrayList;
 
-    public String getPackageID() {
-        return packageID;
-    }
+public class TestBundle {
+    @JsonProperty("packageID")
+    public final String packageID;
+    
+    @JsonProperty("jsScript")
+    public final String jsScript;
 
-    public String getTestName() {
-        return testName;
-    }
+    @JsonProperty("functionName")
+    public final String functionName;
 
-    public String getExpectedResult() {
-        return expectedResult;
-    }
+    @JsonProperty("tests")
+    public final ArrayList<UnitTest> tests;
 
-    public String getCode() {
-        return code;
-    }
-
-    public String getFunctionName() {
-        return functionName;
-    }
-
-    public List getParams() { return params; }
-
-    public TestMessage(String packageID, String testName, String code, String functionName, List params, String expectedResult) {
+    public TestBundle(
+            @JsonProperty("packageID") String packageID,
+            @JsonProperty("jsScript") String jsScript,
+            @JsonProperty("functionName") String functionName,
+            @JsonProperty("tests") ArrayList<UnitTest> tests) {
         this.packageID = packageID;
-        this.testName = testName;
-        this.code = code;
+        this.jsScript = jsScript;
         this.functionName = functionName;
-        this.params = params;
-        this.expectedResult = expectedResult;
+        this.tests = tests;
     }
 }
