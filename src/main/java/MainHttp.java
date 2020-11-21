@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class MainHttp {
+import akka.http.javadsl.server.AllDirectives;
+
+public class MainHttp  extends AllDirectives {
+    
 }
