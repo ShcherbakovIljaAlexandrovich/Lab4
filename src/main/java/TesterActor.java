@@ -18,6 +18,7 @@ public class TesterActor extends AbstractActor {
                     String verdict;
                     if (result.equals(req.expectedResult)) { verdict = "Pass"; }
                     else { verdict = "Fail"; }
+                    System.out.println("Expected result "+req.expectedResult+", actual result "+result);
                     sender().tell(new StoreMessage(req.packageID, req.testName, verdict), self());
                         }
                 ).build();

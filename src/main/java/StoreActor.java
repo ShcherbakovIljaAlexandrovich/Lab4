@@ -14,7 +14,7 @@ public class StoreActor extends AbstractActor {
                         store.put(m.getpackageID(), new HashMap<>());
                     }
                     store.get(m.getpackageID()).put(m.getTestName(), m.getresult());
-                    System.out.println("receive message! "+m.toString());
+                    System.out.println("Stored verdict for test \""+m.getTestName()+"\"");
                 })
                 .match(GetMessage.class, req -> sender().tell(
                         new ResponseMessage(req.getPackageID(), store.get(req.getPackageID())), self())
