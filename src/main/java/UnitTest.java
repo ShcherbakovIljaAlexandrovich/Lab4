@@ -9,7 +9,7 @@ public class UnitTest {
     public final String testName;
     public final String expectedResult;
 
-    @JsonProperty("")
+    @JsonProperty("params")
     public final ArrayList<Integer> params;
     
     public UnitTest(String packageID,
