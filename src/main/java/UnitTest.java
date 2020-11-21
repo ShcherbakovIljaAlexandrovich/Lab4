@@ -19,9 +19,9 @@ public class UnitTest {
     public UnitTest(String packageID,
                     String jsScript,
                     String functionName,
-                    String testName,
-                    String expectedResult,
-                    ArrayList<Integer> params) {
+                    @JsonProperty("testName") String testName,
+                    @JsonProperty("expectedResult") String expectedResult,
+                    @JsonProperty("params") ArrayList<Integer> params) {
         this.packageID = packageID;
         this.jsScript= jsScript;
         this.functionName= functionName;
