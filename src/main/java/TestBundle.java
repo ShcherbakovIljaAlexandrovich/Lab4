@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class TestBundle {
     @JsonProperty("tests")
     public final ArrayList<UnitTest> tests;
 
+    @JsonCreator
     public TestBundle(
             @JsonProperty("packageID") String packageID,
             @JsonProperty("jsScript") String jsScript,
