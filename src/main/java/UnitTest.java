@@ -8,6 +8,8 @@ public class UnitTest {
     public final String functionName;
     public final String testName;
     public final String expectedResult;
+
+    @JsonProperty("")
     public final ArrayList<Integer> params;
     
     public UnitTest(String packageID,
