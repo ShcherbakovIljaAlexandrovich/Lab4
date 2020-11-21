@@ -1,5 +1,3 @@
-import java.util.Map;
-
 public class StoreMessage {
     private String packageID;
     private String testName;
