@@ -14,8 +14,7 @@ public class TesterActor extends AbstractActor {
                             ScriptEngineManager().getEngineByName("nashorn");
                     engine.eval(req.jsScript);
                     Invocable invocable = (Invocable) engine;
-                    System.out.println(req.params);
-                    String result = invocable.invokeFunction(req.functionName, req.params).toString();
+                    String result = invocable.invokeFunction(req.functionName, req.params.toArray()).toString();
                     String verdict;
                     if (result.equals(req.expectedResult)) { verdict = "Pass"; }
                     else { verdict = "Fail"; }
