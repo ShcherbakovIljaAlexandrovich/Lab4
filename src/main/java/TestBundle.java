@@ -14,14 +14,14 @@ public class TestBundle {
     public final String functionName;
 
     @JsonProperty("tests")
-    public final ArrayList<UnitTest> tests;
+    public final ArrayList<TestInfo> tests;
 
     @JsonCreator
     public TestBundle(
             @JsonProperty("packageID") String packageID,
             @JsonProperty("jsScript") String jsScript,
             @JsonProperty("functionName") String functionName,
-            @JsonProperty("tests") ArrayList<UnitTest> tests) {
+            @JsonProperty("tests") ArrayList<TestInfo> tests) {
         this.packageID = packageID;
         this.jsScript = jsScript;
         this.functionName = functionName;

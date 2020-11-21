@@ -4,30 +4,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class UnitTest {
-    @JsonIgnore
     public final String packageID;
-
-    @JsonIgnore
     public final String jsScript;
-
-    @JsonIgnore
     public final String functionName;
-
-    @JsonProperty("testName")
     public final String testName;
-
-    @JsonProperty("expectedResult")
     public final String expectedResult;
-
-    @JsonProperty("params")
     public final ArrayList<Integer> params;
     
     public UnitTest(String packageID,
                     String jsScript,
                     String functionName,
-                    @JsonProperty("testName") String testName,
-                    @JsonProperty("expectedResult") String expectedResult,
-                    @JsonProperty("params") ArrayList<Integer> params) {
+                    String testName,
+                    String expectedResult,
+                    ArrayList<Integer> params) {
         this.packageID = packageID;
         this.jsScript= jsScript;
         this.functionName= functionName;
@@ -38,7 +27,7 @@ public class UnitTest {
 
     public static ArrayList<UnitTest> formFromBundle(TestBundle bundle) {
         ArrayList<UnitTest> tests = new ArrayList<>();
-        for (UnitTest t: bundle.tests) {
+        for (TestInfo t: bundle.tests) {
             tests.add(new UnitTest(
                     bundle.packageID,
                     bundle.jsScript,
