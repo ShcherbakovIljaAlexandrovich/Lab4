@@ -6,7 +6,11 @@ public class UnitTest {
     public final String packageID;
     public final String jsScript;
     public final String functionName;
+
+    @JsonProperty("testName")
     public final String testName;
+
+    @JsonProperty("expectedResult")
     public final String expectedResult;
 
     @JsonProperty("params")
