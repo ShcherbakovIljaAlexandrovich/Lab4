@@ -1,19 +1,13 @@
-import akka.actor.AbstractActor;
+import java.util.Map;
 
 public class GetMessage {
-    private String key;
-    private String value;
+    private String packageID;
 
-    public String getKey() {
-        return key;
+    public String getPackageID() {
+        return packageID;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public GetMessage(String key, String value) {
-        this.key = key;
-        this.value = value;
+    public GetMessage(String packageID) {
+        this.packageID = packageID;
     }
 }

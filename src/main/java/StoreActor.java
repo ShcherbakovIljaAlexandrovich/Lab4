@@ -5,16 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoreActor extends AbstractActor {
-    private Map<String, String> store = new HashMap<>();
+    private Map<String, Map<String, String>> store = new HashMap<>();
     @Override
     public Receive createReceive() {
         return ReceiveBuilder.create()
                 .match(StoreMessage.class, m -> {
-                    store.put(m.getKey(), m.getValue());
+                    store.get(m.getpackageID()).put(m.getTestName(), m.getresult());
                     System.out.println("receive message! "+m.toString());
                 })
                 .match(GetMessage.class, req -> sender().tell(
-                        new StoreMessage(req.getKey(), store.get(req.getKey())), self())
+                        new ResponseMessage(req.getPackageID(), store.get(req.getPackageID())), self())
                 ).build();
     }
 }
