@@ -1,5 +1,6 @@
 StoreMessage.class
 GetMessage.class
+TestInfo.class
 ResponseMessage.class
 StoreActor.class
 UnitTest.class
